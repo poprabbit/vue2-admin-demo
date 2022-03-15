@@ -32,6 +32,28 @@ import Layout from '@/layout'
  */
 export const constantRoutes = [
   {
+    path: '/my',
+    component: Layout,
+    redirect: '/my/user',
+    name: 'my',
+    meta: { title: 'my', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'user',
+        name: 'UserManage',
+        component: () => import('@/views/UserManage/user'),
+        meta: { title: 'user', icon: 'table' }
+      },
+      {
+        path: 'role',
+        name: 'RoleManege',
+        // component: () => import('@/views/UserManage/role'),
+        meta: { title: 'role', icon: 'tree' }
+      }
+    ]
+  },
+
+  {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
@@ -93,6 +115,7 @@ export const constantRoutes = [
   {
     path: '/nested',
     component: Layout,
+    hidden: true,
     redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
@@ -154,7 +177,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        path: 'https://panjiachen.gitee.io/vue-element-admin-site/#/',
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
